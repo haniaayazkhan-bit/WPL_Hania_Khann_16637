@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="../bootstrap/CSS/bootstrap.min.CSS">
+
+    <!-- CUSTOM CSS -->
+    <style>
+        body{
+            background-color:#f8f9fa;
+        }
+
+        .card{
+            box-shadow:0 4px 10px rgba(0,0,0,0.1);
+            border:none;
+        }
+
+        .error{
+            color:red;
+            font-size:14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card">
+                <div class="card-body">
+
+                    <h3 class="text-center mb-4">Student Registration</h3>
+
+                    <!-- FORM -->
+                    <form onsubmit="return validateForm()">
+
+                        <!-- USERNAME -->
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" id="username" class="form-control">
+                            <span class="error" id="userError"></span>
+                        </div>
+
+                        <!-- EMAIL -->
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control">
+                            <span class="error" id="emailError"></span>
+                        </div>
+
+                        <!-- PASSWORD -->
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" id="password" class="form-control">
+                            <span class="error" id="passError"></span>
+                        </div>
+
+                        <!-- CHECKBOX -->
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="agree">
+                            <label class="form-check-label">
+                                I agree to the terms & conditions
+                            </label>
+                        </div>
+                        <span class="error" id="checkError"></span>
+
+                        <!-- BUTTON -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">
+                                Submit
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- BOOTSTRAP JS -->
+<script src="../bootstrap/JS/bootstrap.bundle.JS"></script>
+
+<!-- JAVASCRIPT VALIDATION -->
+<script>
+    function validateForm(){
+
+        let username = document.getElementById("username").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let agree = document.getElementById("agree").checked;
+
+        document.getElementById("userError").innerHTML = "";
+        document.getElementById("emailError").innerHTML = "";
+        document.getElementById("passError").innerHTML = "";
+        document.getElementById("checkError").innerHTML = "";
+
+        if(username == ""){
+            document.getElementById("userError").innerHTML = "Username is required";
+            return false;
+        }
+
+        if(email == ""){
+            document.getElementById("emailError").innerHTML = "Email is required";
+            return false;
+        }
+
+        if(password.length < 6){
+            document.getElementById("passError").innerHTML = "Password must be at least 6 characters";
+            return false;
+        }
+
+        if(!agree){
+            document.getElementById("checkError").innerHTML = "Please accept the terms & conditions";
+            return false;
+        }
+
+        alert("Form Submitted Successfully!");
+        return true;
+    }
+</script>
+
+</body>
+</html>
